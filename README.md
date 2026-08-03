@@ -56,9 +56,28 @@ It is **not** a Mem0 replacement — run it beside your fact store. Facts are wh
 3. **Psychology is pluggable.** Default trust/reliability/sentiment derivers are documented and swappable — bring your own model of a mind.
 4. **Useful at n=2.** One user, one assistant, cross-context privacy: already worth it. Scales to agent teams from there.
 
+## Does it help? (reproducible)
+
+A planner delegating to 20 workers of hidden, mixed reliability — identical
+setup, the only difference is memory:
+
+```
+policy                        failures  repeat-fail  retries
+------------------------------------------------------------
+baseline (no memory)             100.6    83.1±32.9    100.6
+kith (relationship memory)        25.2    15.3±9.5      25.2
+
+repeat-delegation failures cut by 82%
+```
+
+`python examples/delegation_sim/simulator.py` — seeded, no LLM calls,
+runs in seconds. [Details](examples/delegation_sim/README.md).
+
 ## Status
 
-Design phase. See [docs/DESIGN.md](docs/DESIGN.md). Adapters planned: LangGraph, hermes-agent (MemoryProvider), A2A.
+v0.1 on PyPI (`pip install kith-ai`). Core library + leak-path test suite.
+See [docs/DESIGN.md](docs/DESIGN.md). Adapters planned: LangGraph,
+hermes-agent (MemoryProvider), A2A.
 
 ## Author
 
