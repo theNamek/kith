@@ -18,6 +18,12 @@ Research on multi-agent failures (the MAST taxonomy) puts inter-agent misalignme
 
 kith is that memory.
 
+## Install
+
+```bash
+pip install kith-ai        # imports as `kith`
+```
+
 ## What it is
 
 A small Python library (sqlite by default, zero heavy deps) that gives your agents:

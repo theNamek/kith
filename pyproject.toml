@@ -3,7 +3,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "kith"
+# Distribution name: "kith" on PyPI is squatted by a dead 2016 package
+# (PEP 541 transfer request is an option later). Import name stays `kith`.
+name = "kith-ai"
 version = "0.1.0"
 description = "Social memory for multi-agent systems: who remembers what, about whom, visible to whom."
 readme = "README.md"
