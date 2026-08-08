@@ -73,6 +73,12 @@ repeat-delegation failures cut by 82%
 `python examples/delegation_sim/simulator.py` — seeded, no LLM calls,
 runs in seconds. [Details](examples/delegation_sim/README.md).
 
+And the observation log doubles as a research instrument: in the
+[contagion demo](examples/contagion_viz/README.md), kith's derived
+sentiment views reconstruct a team's emotional dynamics — and locate the
+toxic source — from per-dyad memories alone, no access to anyone's
+internal state.
+
 ## Status
 
 v0.1 on PyPI (`pip install kith-ai`). Core library + leak-path test suite.
