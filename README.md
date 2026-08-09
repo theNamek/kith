@@ -79,10 +79,33 @@ sentiment views reconstruct a team's emotional dynamics — and locate the
 toxic source — from per-dyad memories alone, no access to anyone's
 internal state.
 
+## LangGraph
+
+`pip install "kith-ai[langgraph]"` — wrap any node so its outcomes become
+relationship memory, and let the supervisor pick workers by track record:
+
+```python
+from kith.integrations.langgraph import KithSupervisor, observe_node
+
+sup = KithSupervisor(store, supervisor="agent:supervisor",
+                     workers=["agent:coder", "agent:researcher"])
+
+graph.add_node("coder", observe_node(
+    coder_fn, store=store, observer="agent:supervisor",
+    subject="agent:coder", judge=lambda out: not out.get("error")))
+
+def route(state):
+    return node_of[sup.pick()]        # explore unknowns, avoid known-bad
+
+prompt += sup.brief()                 # derived, scope-safe worker briefing
+```
+
+Tested against a real `StateGraph` (langgraph ≥ 1.0).
+
 ## Status
 
-v0.1 on PyPI (`pip install kith-ai`). Core library + leak-path test suite.
-See [docs/DESIGN.md](docs/DESIGN.md). Adapters planned: LangGraph,
+v0.1 on PyPI (`pip install kith-ai`). Core library + leak-path test suite +
+LangGraph adapter. See [docs/DESIGN.md](docs/DESIGN.md). Next adapters:
 hermes-agent (MemoryProvider), A2A.
 
 ## Author
