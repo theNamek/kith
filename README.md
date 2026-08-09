@@ -110,11 +110,29 @@ automatically (`on_delegation`), the system prompt gains a scope-safe
 relationship brief, and the agent gets `kith_observe` / `kith_view` tools —
 observing always as the session principal, never as a model-chosen identity.
 
+## A2A
+
+For agents that talk [A2A](https://github.com/a2aproject/A2A), kith
+observes the protocol traffic you already handle — no extra
+instrumentation:
+
+```python
+from kith.integrations.a2a import observe_task, assert_card, confirm_capability
+
+assert_card(me, "agent:remote-writer", agent_card)   # skills -> self-claims
+observe_task(me, "agent:remote-writer", task)        # terminal Task -> outcome
+confirm_capability(me, "agent:remote-writer", "summarization")  # seen it work
+```
+
+Completed/failed/rejected tasks become reliability evidence; canceled and
+non-terminal states are ignored (withdrawn work is not a signal). AgentCard
+skills stay `source="self"` until a real task confirms them — a card never
+inflates a track record.
+
 ## Status
 
-v0.1 on PyPI (`pip install kith-ai`). Core library + leak-path test suite +
-LangGraph and hermes-agent adapters. See [docs/DESIGN.md](docs/DESIGN.md).
-Next: A2A metadata profile.
+v0.2 on PyPI (`pip install kith-ai`). Core library + leak-path test suite +
+LangGraph, hermes-agent, and A2A adapters. See [docs/DESIGN.md](docs/DESIGN.md).
 
 ## Author
 

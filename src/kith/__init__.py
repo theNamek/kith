@@ -7,7 +7,7 @@ from .model import KithError, Observation, Scope
 from .store import BoundPrincipal, Store
 from .view import RelationshipView
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 __all__ = [
     "Store",
