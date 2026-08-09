@@ -1,0 +1,5 @@
+name: kith
+version: 0.1.0
+description: "kith — social/relationship memory: delegation reliability, sentiment, and capability views with provenance and scope contracts."
+hooks:
+  - on_delegation

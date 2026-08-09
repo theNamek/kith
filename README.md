@@ -102,11 +102,19 @@ prompt += sup.brief()                 # derived, scope-safe worker briefing
 
 Tested against a real `StateGraph` (langgraph ≥ 1.0).
 
+## hermes-agent
+
+kith runs as a hermes-agent memory provider ([shim](examples/hermes_plugin/)):
+every subagent delegation the parent witnesses becomes relationship memory
+automatically (`on_delegation`), the system prompt gains a scope-safe
+relationship brief, and the agent gets `kith_observe` / `kith_view` tools —
+observing always as the session principal, never as a model-chosen identity.
+
 ## Status
 
 v0.1 on PyPI (`pip install kith-ai`). Core library + leak-path test suite +
-LangGraph adapter. See [docs/DESIGN.md](docs/DESIGN.md). Next adapters:
-hermes-agent (MemoryProvider), A2A.
+LangGraph and hermes-agent adapters. See [docs/DESIGN.md](docs/DESIGN.md).
+Next: A2A metadata profile.
 
 ## Author
 
